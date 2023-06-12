@@ -11,6 +11,7 @@ sudo yum install -y python3 git gcc python3-devel
 sudo yum install -y postgresql15-llvmjit postgresql15-plpython3 postgresql15-server-devel
 sudo yum install -y python3-psycopg2
 pip install boto3
+sudo yum install -y python-flask
 pip install uwsgi
 sudo dnf install nginx -y
 
