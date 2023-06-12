@@ -4,8 +4,14 @@ export IMAGE_GALLERY_SCRIPT_VERSION="1.1"
 CONFIG_BUCKET="edu.au.cs.image-gallery-config"
 
 # Install packages
-yum -y update
-yum install -y python3 git postgresql postgresql-devel gcc python3-devel
+sudo yum -y update
+sudo yum -y install python-pip
+sudo yum install -y emacs-nox nano tree
+sudo yum install -y python3 git gcc python3-devel
+sudo yum install -y postgresql15-llvmjit postgresql15-plpython3 postgresql15-server-devel
+sudo yum install -y python3-psycopg2
+pip install boto3
+pip install uwsgi
 sudo dnf install nginx -y
 
 # Configure/install custom software
