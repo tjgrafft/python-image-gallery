@@ -10,7 +10,7 @@ sudo dnf install nginx -y
 
 # Configure/install custom software
 cd /home/ec2-user
-git clone git@github.com:tjgrafft/python-image-gallery.git
+git clone https://github.com/tjgrafft/python-image-gallery.git
 chown -R ec2-user:ec2-user python-image-gallery
 su ec2-user -l -c "cd ~/python-image-gallery && pip3 install -r 
 requirements.txt --user"
