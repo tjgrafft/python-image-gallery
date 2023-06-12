@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Administration</title>
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <a href="/admin/addUser">Add New User</a>
+    <ul id="user-list">
+        {% for user in users %}
+            <li>
+                <a href="/admin/editUser/{{ user.username }}">{{ user.username }}</a> - {{ user.full_name }} 
+                <a href="/admin/deleteUser/{{ user.username }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
