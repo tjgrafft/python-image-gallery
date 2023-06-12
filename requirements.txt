@@ -1,4 +1,4 @@
 boto3
 psycopg2
-flask
+python-flask
 uwsgi
