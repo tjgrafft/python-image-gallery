@@ -8,7 +8,7 @@ import base64
 from botocore.exceptions import ClientError
 
 
-def get_secret():
+def get_secret_image_gallery():
 
     secret_name = "rds!db-f53eea00-3d78-4913-84d3-24e6865dd7d6"
     region_name = "us-east-1"
@@ -46,8 +46,18 @@ def get_secret():
             # We can't find the resource that you asked for.
             # Deal with the exception here, and/or rethrow at your discretion.
             raise e
+        else:
+            # Decrypts secret using the associated KMS CMK.
+            # Depending on whether the secret is a string or binary, one of these fields will be populated.
+            if 'SecretString' in get_secret_value_response:
+              secret = get_secret_value_response['SecretString']
+            else:
+              decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
 
     # Decrypts secret using the associated KMS key.
-    secret = get_secret_value_response['SecretString']
-
+    #secret = get_secret_value_response['SecretString']
+        if secret is None:
+            return decoded_binary_secret
+        else:
+            return secret
     # Your code goes here.

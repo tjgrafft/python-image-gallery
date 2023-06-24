@@ -1,10 +1,10 @@
 import psycopg2
 import json
-from secrets import get_secret
+from .secrets import get_secret_image_gallery
 
 
 def read_secret_from_aws():
-    json_string = get_secret()
+    json_string = get_secret_image_gallery()
     return json.loads(json_string)
 
 

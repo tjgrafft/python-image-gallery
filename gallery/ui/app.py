@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db import DbConnection
+from gallery.tools.db import DbConnection
 
 app = Flask(__name__)
 
