@@ -10,8 +10,8 @@ from botocore.exceptions import ClientError
 
 def get_secret_image_gallery():
 
-    secret_name = "sec-ig-postgres2"
-    region_name = "us-east-1"
+    secret_name = 'sec-ig-postgres2'
+    region_name = 'us-east-1'
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
@@ -46,18 +46,17 @@ def get_secret_image_gallery():
             # We can't find the resource that you asked for.
             # Deal with the exception here, and/or rethrow at your discretion.
             raise e
-        else:
-            # Decrypts secret using the associated KMS CMK.
-            # Depending on whether the secret is a string or binary, one of these fields will be populated.
-            if 'SecretString' in get_secret_value_response:
-              secret = get_secret_value_response['SecretString']
-            else:
-              decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
+    # Decrypts secret using the associated KMS CMK.
+    # Depending on whether the secret is a string or binary, one of these fields will be populated.
+    if 'SecretString' in get_secret_value_response:
+        secret = get_secret_value_response['SecretString']
+    else:
+        decoded_binary_secret = base64.b64decode(get_secret_value_response['SecretBinary'])
 
     # Decrypts secret using the associated KMS key.
     #secret = get_secret_value_response['SecretString']
-        if secret is None:
-            return decoded_binary_secret
-        else:
-            return secret
+    if secret is None:
+        return decoded_binary_secret
+    else:
+        return secret
     # Your code goes here.
