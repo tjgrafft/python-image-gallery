@@ -21,7 +21,7 @@ def get_username(secret):
 
 
 def get_dbname(secret):
-    return secret['database_name']
+    return secret['dbInstanceIdentifier']
 
 
 class DbConnection:

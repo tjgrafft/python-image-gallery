@@ -10,7 +10,7 @@ from botocore.exceptions import ClientError
 
 def get_secret_image_gallery():
 
-    secret_name = "rds!db-f53eea00-3d78-4913-84d3-24e6865dd7d6"
+    secret_name = "sec-ig-postgres2"
     region_name = "us-east-1"
 
     # Create a Secrets Manager client
