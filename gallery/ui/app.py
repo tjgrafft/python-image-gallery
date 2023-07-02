@@ -9,10 +9,17 @@ import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
 import os
 import logging
+import json
 from gallery.tools.s3 import put_object
 
 app = Flask(__name__)
-app.secret_key = get_secret_flask_session()['secret_key']
+
+def read_cookie_from_aws():
+    json_string2 = get_secret_flask_session()
+    return json.loads(json_string2)
+
+
+app.secret_key = read_cookie_from_aws()['secret_key']
 
 UPLOAD_FOLDER = '/tmp'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
