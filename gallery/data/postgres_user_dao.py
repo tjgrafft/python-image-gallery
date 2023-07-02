@@ -1,6 +1,8 @@
-from ..tools.db import db
+from ..tools.db import DbConnection
 from .user import User
 from .user_dao import UserDAO
+
+db = DbConnection()
 
 class PostgresUserDAO(UserDAO):
     def __init__(self):
